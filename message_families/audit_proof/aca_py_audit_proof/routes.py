@@ -47,3 +47,29 @@ async def audit_proof_verify(request: web.BaseRequest):
 
     return web.json_response(verified_response)
 
+async def register(app: web.Application):
+    """Register routes."""
+
+    app.add_routes(
+        [
+            web.post(
+                "/audit-proof/verify-presentation",
+                audit_proof_verify,
+            ),
+        ]
+    )
+
+
+def post_process_routes(app: web.Application):
+    """Amend swagger API."""
+
+    # Add top-level tags description
+    if "tags" not in app._state["swagger_dict"]:
+        app._state["swagger_dict"]["tags"] = []
+    app._state["swagger_dict"]["tags"].append(
+        {
+            "name": "audit-proof",
+            "description": "Audit proof presentation",
+        }
+    )
+

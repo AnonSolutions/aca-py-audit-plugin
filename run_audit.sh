@@ -20,6 +20,8 @@ sleep 5
  --preserve-exchange-records \
  --plugin aca-py-audit-plugin \
  --plugin aca_py_audit_plugin \
+ --plugin aca-py-audit-proof \
+ --plugin aca_py_audit_proof \
  --genesis-url ${LEDGER_URL}/genesis \
  --trace-target log \
  --trace-tag acapy.events \
