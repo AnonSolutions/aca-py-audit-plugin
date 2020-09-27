@@ -1,9 +1,6 @@
 
 export DOCKERHOST=${APPLICATION_URL-$(docker run --rm --net=host eclipse/che-ip)}
 export LEDGER_URL=http://${DOCKERHOST}:9000
-export DID_SEED=d_000000000000000000000000390822
-
-curl -d "{\"seed\":\"${DID_SEED}\", \"role\":\"TRUST_ANCHOR\", \"alias\":\"Audit.Agent\"}" -X POST http://localhost:9000/register
 
 sleep 5
 
@@ -24,8 +21,6 @@ sleep 5
  --plugin aca-py-audit-plugin \
  --plugin aca_py_audit_plugin \
  --genesis-url ${LEDGER_URL}/genesis \
- --seed ${DID_SEED} \
- --webhook-url http://${DOCKERHOST}:8022/webhooks \
  --trace-target log \
  --trace-tag acapy.events \
  --trace-label Audit.Agent.trace
