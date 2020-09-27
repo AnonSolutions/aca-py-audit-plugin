@@ -21,7 +21,7 @@ class AuditProofRequestSchema(Schema):
     )
 
 
-@docs(tags=["audit_proof"], summary="Verify a completed proof/presentation")
+@docs(tags=["audit-proof"], summary="Verify a completed proof/presentation")
 @request_schema(AuditProofRequestSchema())
 async def audit_proof_verify(request: web.BaseRequest):
     """
@@ -46,6 +46,7 @@ async def audit_proof_verify(request: web.BaseRequest):
     verified_response = {"verified": verified}
 
     return web.json_response(verified_response)
+
 
 async def register(app: web.Application):
     """Register routes."""
