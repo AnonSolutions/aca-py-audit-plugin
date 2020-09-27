@@ -31,4 +31,4 @@ else
 fi
 
 RAND_NAME=$(cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)
-$DOCKER run --rm -ti -p 8021:8021 --name "aca-py-audit-runner_${RAND_NAME}" $ARGS aca-py-audit "$@"
+$DOCKER run --rm -ti -p 7021:7021 --name "aca-py-audit-runner_${RAND_NAME}" $ARGS aca-py-audit "$@"
